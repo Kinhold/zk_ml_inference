@@ -1,0 +1,4 @@
+private_inputs = ["10", "20", "30", "40"]
+pub_model_weights = ["2", "1", "1", "1"]
+pub_bias = "5"
+pub_expected_activation = "1"
