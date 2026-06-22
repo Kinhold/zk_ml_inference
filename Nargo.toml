@@ -1,0 +1,6 @@
+[package]
+name = "zk_ml_inference"
+type = "bin"
+authors = [""]
+
+[dependencies]
