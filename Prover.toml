@@ -1,0 +1,4 @@
+private_inputs = ["10", "20", "30", "40"]
+model_weights = ["2", "1", "1", "1"]
+bias = "5"
+expected_activation = "1"

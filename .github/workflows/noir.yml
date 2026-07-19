@@ -1,0 +1,28 @@
+name: Noir
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Nargo
+        run: |
+          mkdir -p "$HOME/.nargo/bin"
+          curl --fail --location \
+            https://github.com/noir-lang/noir/releases/download/v1.0.0-beta.21/noir-x86_64-unknown-linux-gnu.tar.gz \
+            | tar -xz -C "$HOME/.nargo/bin"
+          echo "$HOME/.nargo/bin" >> "$GITHUB_PATH"
+          "$HOME/.nargo/bin/nargo" --version
+      - name: Check package
+        run: nargo check
+      - name: Run tests
+        run: nargo test
+      - name: Execute sample witness
+        run: nargo execute
